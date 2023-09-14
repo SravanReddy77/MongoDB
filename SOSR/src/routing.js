@@ -9,7 +9,7 @@ import Register from "./register";
     return (
         <BrowserRouter>
         <Routes>
-        <Route path = "/login" element= {<Login />} />
+        <Route path = "/" element= {<Login />} />
         <Route path = "/register" element= {<Register />} />
         <Route path = "/homepage" element= {<Homepage />} />
         </Routes>
