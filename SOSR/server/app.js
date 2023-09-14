@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("./userModel");
+const Login = require("./userModel");
 
 const auth = require("./auth");
 
@@ -40,7 +41,6 @@ app.use((req, res, next) => {
 
 // register endpoint
 app.post("/register", (request, response) => {
-    console.log('111111111', request.body);
     // hash the password
     bcrypt
       .hash(request.body.password, 5)
@@ -49,8 +49,9 @@ app.post("/register", (request, response) => {
         const user = new User({
           email: request.body.email,
           password: hashedPassword,
+          username: request.body.username
         });
-  
+        console.log("1111111111", request.body);
         // save the new user
         user
           .save()
@@ -80,14 +81,15 @@ app.post("/register", (request, response) => {
 
   // login endpoint
 app.post("/login", (request, response) => {
+
     // check if email exists
-    User.findOne({ email: request.body.email })
+    Login.findOne({ email: request.body.email })
   
       // if email exists
-      .then((user) => {
+      .then((login) => {
         // compare the password entered and the hashed password found
         bcrypt
-          .compare(request.body.password, user.password)
+          .compare(request.body.password, login.password)
   
           // if the passwords match
           .then((passwordCheck) => {
@@ -103,17 +105,17 @@ app.post("/login", (request, response) => {
             //   create JWT token
             const token = jwt.sign(
               {
-                userId: user._id,
-                userEmail: user.email,
+                userId: login._id,
+                userEmail: login.email,
               },
               "RANDOM-TOKEN",
               { expiresIn: "24h" }
             );
-  
+
             //   return success response
             response.status(200).send({
               message: "Login Successful",
-              email: user.email,
+              email: login.email,
               token,
             });
           })
