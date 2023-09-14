@@ -4,7 +4,7 @@
 .header{
     font-size: 50px;
     font-weight: 600;
-    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    background-image: linear-gradient(to left, #f09 0%, #b393d3);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -77,9 +77,9 @@
 
 
 .body {
-     background: url ('/assets/backgroung-img.jpg');
+     background: url('../assets/IMG_8669.JPEG');
      -webkit-background-size: cover; 
-     -moz-background-size: cover; 
+     -moz-background-size: cover;
      -o-background-size: cover; 
      background-size: cover;
      max-height: 100%;

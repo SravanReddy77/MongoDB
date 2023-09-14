@@ -1,0 +1,14 @@
+.homebody {
+    background: url('../assets/IMG_8670.JPEG');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    .panel-default { 
+       opacity: 0.9; 
+       margin-top:30px;
+    }
+    .form-group.last { 
+       margin-bottom:50px;
+    }   
