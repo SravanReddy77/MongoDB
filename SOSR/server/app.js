@@ -13,6 +13,7 @@ app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (request, response, next) => {
+  console.log('11111111111111111111111')
   response.json({ message: "Hey! This is your server response!" });
   next();
 });
@@ -41,6 +42,8 @@ app.use((req, res, next) => {
 
 // register endpoint
 app.post("/register", (request, response) => {
+  console.log('222222222222222222222222')
+
     // hash the password
     bcrypt
       .hash(request.body.password, 5)
@@ -51,7 +54,6 @@ app.post("/register", (request, response) => {
           password: hashedPassword,
           username: request.body.username
         });
-        console.log("1111111111", request.body);
         // save the new user
         user
           .save()
@@ -81,7 +83,7 @@ app.post("/register", (request, response) => {
 
   // login endpoint
 app.post("/login", (request, response) => {
-
+console.log('3333333333333333333333333333333')
     // check if email exists
     Login.findOne({ email: request.body.email })
   
@@ -138,11 +140,13 @@ app.post("/login", (request, response) => {
   
   // free endpoint
 app.get("/free-endpoint", (request, response) => {
+  console.log('444444444444444444444444444444444444')
     response.json({ message: "You are free to access me anytime" });
   });
   
   // authentication endpoint
   app.get("/auth-endpoint", auth, (request, response) => {
+    console.log('55555555555555555555555555555')
     response.json({ message: "You are authorized to access me" });
   });
   
