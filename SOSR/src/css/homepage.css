@@ -1,9 +1,9 @@
 .homebody {
     background: url('../assets/IMG_8670.JPEG');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 1300px;
+    /* width: 500px;
+    height: 300px; */
+  background-repeat: no-repeat
     }
     .panel-default { 
        opacity: 0.9; 
