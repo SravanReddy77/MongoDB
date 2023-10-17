@@ -83,7 +83,6 @@ app.post("/register", (request, response) => {
 
   // login endpoint
 app.post("/login", (request, response) => {
-console.log('3333333333333333333333333333333')
     // check if email exists
     Login.findOne({ email: request.body.email })
   
@@ -148,5 +147,16 @@ app.get("/free-endpoint", (request, response) => {
   app.get("/auth-endpoint", auth, (request, response) => {
     console.log('55555555555555555555555555555')
     response.json({ message: "You are authorized to access me" });
+  });
+
+  app.get("/users",async (request, response) => {
+    const bbnagar = await User.find()
+    .then((result) => {
+      response.status(201).send({
+        message: "Users retrieved successfully",
+        result,
+      });
+    }).catch((e) => {response.status(404).send({message: "Not Founds",e,});});
+    return bbnagar
   });
   
